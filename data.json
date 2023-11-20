@@ -1,0 +1,32 @@
+{
+  "Bills": [
+    {
+      "id": 1,
+      "dueDate": "11-12-2023",
+      "councilName": "Surry hills",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      "amount": "500"
+    },
+    {
+      "id": 2,
+      "dueDate": "10-12-2023",
+      "councilName": "Surry hills",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      "amount": "600"
+    },
+    {
+      "id": 3,
+      "dueDate": "16-12-2023",
+      "councilName": "Surry hills",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      "amount": "600"
+    },
+    {
+      "id": 4,
+      "dueDate": "16-12-2023",
+      "councilName": "Surry hills",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      "amount": "700"
+    }
+  ]
+}

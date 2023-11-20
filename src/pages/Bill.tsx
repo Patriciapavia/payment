@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 type FrequencyType = 'weekly' | 'fortnightly' | 'monthly';
 type BillProps = {
@@ -6,10 +7,11 @@ type BillProps = {
   amount: number;
 };
 
-const Bill = ({ frequency, amount }: BillProps) => {
+const Bill = ({ amountDue }) => {
   return (
     <div>
-      {frequency}, {amount}
+      <Link to={`/bill/1`}>pay{amountDue}</Link>
+      cbkacbfla
     </div>
   );
 };

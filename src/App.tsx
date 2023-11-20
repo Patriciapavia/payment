@@ -1,12 +1,13 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
+import { Provider } from 'react-redux';
 import Home from './pages/Home';
 import Bill from './pages/Bill';
 import Preview from './pages/Preview';
+import { store } from './store/store';
 
 function App() {
   return (
-    <>
+    <Provider store={store}>
       <Router>
         <Routes>
           <Route
@@ -17,7 +18,7 @@ function App() {
           <Route path='/preview' element={<Preview />} />
         </Routes>
       </Router>
-    </>
+    </Provider>
   );
 }
 
