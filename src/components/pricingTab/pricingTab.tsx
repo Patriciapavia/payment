@@ -1,5 +1,4 @@
 interface PricingTabProps {
-  isSelect: boolean;
   frenquency: 'weekly' | 'fortnightly' | 'monthly';
   popular?: boolean;
   price: number;

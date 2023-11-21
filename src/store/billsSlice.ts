@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { Dispatch } from 'redux';
-type FrequencyType = 'weekly' | 'fortnightly' | 'monthly';
 
 type BillItem = {
   id: number;
@@ -8,19 +7,6 @@ type BillItem = {
   councilName: string;
   description: string;
   amount: number;
-  amountWeekly: {
-    amount: number;
-    description: string;
-  };
-  amountForthnightly: {
-    amount: number;
-    description: string;
-  };
-  amountMonthly: {
-    amount: number;
-    description: string;
-  };
-  frequency: FrequencyType;
 };
 type BillState = {
   bills: BillItem[];
@@ -39,11 +25,6 @@ export const billsSlice = createSlice({
     getBills: (state) => {
       state.loading = true;
     },
-    selectfrequency: (state, action) => {
-      state.bills = state.bills.filter(
-        (bill) => bill.frequency === action.payload
-      );
-    },
     getBillsSuccess: (state, action) => {
       state.bills = action.payload;
       state.loading = false;
@@ -56,17 +37,10 @@ export const billsSlice = createSlice({
   },
 });
 
-export const { getBills, getBillsSuccess, getBillsFailure, selectfrequency } =
+export const { getBills, getBillsSuccess, getBillsFailure } =
   billsSlice.actions;
 export const billsSelector = (state: { bills: BillState }) => state.bills;
 export default billsSlice.reducer;
-
-export function selectPaymentFrequency(frequency: FrequencyType) {
-  return async (dispatch: Dispatch) => {
-    dispatch(selectfrequency(frequency));
-  };
-}
-
 
 export function fetchBills() {
   return async (dispatch: Dispatch) => {

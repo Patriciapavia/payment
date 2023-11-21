@@ -1,25 +1,17 @@
 import { useState } from 'react';
-import { billsSelector, selectPaymentFrequency } from '../store/billsSlice';
-import { Link, useParams } from 'react-router-dom';
+import { billsSelector } from '../store/billsSlice';
+import { useParams } from 'react-router-dom';
 import Datepicker from 'react-tailwindcss-datepicker';
 import PricingTab from '../components/pricingTab/pricingTab';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { useAppDispatch } from '../store/store';
 type FrequencyType = 'weekly' | 'fortnightly' | 'monthly';
-// type BillProps = {
-//   frequency: FrequencyType;
-//   amount: number;
-// };
 
 const Bill = () => {
   const { id } = useParams();
-  const [frequencySelect, setFrequencySelect] = useState(false);
-  const { bills, loading, hasErrors } = useSelector(billsSelector);
+  const { bills } = useSelector(billsSelector);
   const bill = bills.filter((x) => x.id === Number(id));
-  console.log(bill);
-
   const [value, setValue] = useState({
     startDate: null,
     endDate: null,
@@ -29,17 +21,10 @@ const Bill = () => {
     console.log('newValue:', newValue);
     setValue(newValue);
   };
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const [isAnnual, setIsAnnual] = useState<boolean>(true);
-  const handlesetUpPaymentClick = (id, frenquency) => {
-    // dispatch(selectPaymentFrequency('weekly'));
-    console.log('click');
+  const handleSetupPaymentClick = (id: number, frenquency: string) => {
     navigate(`/preview-plan/id=${id}/frequency=${frenquency}`);
-  };
-  const datePicker = {
-    backgroundColor: '#fff',
   };
 
   return (
@@ -78,8 +63,7 @@ const Bill = () => {
             {/* Pricing tab 1 */}
 
             <PricingTab
-              onClick={() => handlesetUpPaymentClick(b.id, 'weekly')}
-              isSelect={frequencySelect}
+              onClick={() => handleSetupPaymentClick(b.id, 'weekly')}
               frenquency='weekly'
               price={Math.floor(b.amount / 27)}
               planDescription={`27 weekly payments of $${Math.floor(
@@ -89,8 +73,7 @@ const Bill = () => {
 
             {/* Pricing tab 2 */}
             <PricingTab
-              onClick={() => handlesetUpPaymentClick(b.id, 'fortnightly')}
-              isSelect={frequencySelect}
+              onClick={() => handleSetupPaymentClick(b.id, 'fortnightly')}
               frenquency='fortnightly'
               popular={true}
               price={Math.floor(b.amount / 13)}
@@ -101,8 +84,7 @@ const Bill = () => {
 
             {/* Pricing tab 3 */}
             <PricingTab
-              onClick={() => handlesetUpPaymentClick(b.id, 'monthly')}
-              isSelect={frequencySelect}
+              onClick={() => handleSetupPaymentClick(b.id, 'monthly')}
               frenquency='monthly'
               price={Math.floor(b.amount / 6)}
               planDescription={`6 monthly payments of $${Math.floor(

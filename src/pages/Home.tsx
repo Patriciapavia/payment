@@ -12,17 +12,10 @@ import { billsSelector, fetchBills } from '../store/billsSlice';
 
 const Home = () => {
   const dispatch = useAppDispatch();
-  const { bills, loading, hasErrors } = useSelector(billsSelector);
+  const { bills } = useSelector(billsSelector);
   useEffect(() => {
     dispatch(fetchBills());
   }, [dispatch]);
-  const handleOptionClick = (id: number) => {
-    // Redirect to the bill page with the specified ID
-    // window.location.href = `/bills/${id}`;
-    // history.push('/');
-    // <Link to={`/bill/${id}`} />;
-    console.log('click');
-  };
 
   return (
     <div className='flex h-screen'>

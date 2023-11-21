@@ -1,15 +1,12 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { useAppDispatch } from '../store/store';
-import { billsSelector, fetchBills } from '../store/billsSlice';
+import { billsSelector } from '../store/billsSlice';
 import { useNavigate, useParams } from 'react-router-dom';
-type Props = {};
 
 const Preview = () => {
   const navigate = useNavigate();
 
-  const { bills, loading, hasErrors } = useSelector(billsSelector);
+  const { bills } = useSelector(billsSelector);
   console.log(bills);
   const { billid, frequency } = useParams();
   // value.split('=')[1] //Right hand side
