@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import Home from './pages/Home';
 import Bill from './pages/Bill';
-import Preview from './pages/Preview';
+import Preview from './pages/PreviewPaymentPlan';
 import { store } from './store/store';
 
 function App() {
@@ -10,12 +10,12 @@ function App() {
     <Provider store={store}>
       <Router>
         <Routes>
-          <Route
-            path='/'
-            element={<Home datePick='11/12/2023' amount={4455} />}
-          />
+          <Route path='/' element={<Home />} />
           <Route path='/bill/:id' element={<Bill />} />
-          <Route path='/preview' element={<Preview />} />
+          <Route
+            path='/preview-plan/:billid/:frequency'
+            element={<Preview />}
+          />
         </Routes>
       </Router>
     </Provider>
