@@ -1,0 +1,117 @@
+import React from 'react';
+import { useSelector } from 'react-redux';
+
+import { useAppDispatch } from '../store/store';
+import { billsSelector, fetchBills } from '../store/billsSlice';
+import { useParams } from 'react-router-dom';
+type Props = {};
+
+const Preview = () => {
+  const { bills, loading, hasErrors } = useSelector(billsSelector);
+  console.log(bills);
+  const { billid, frequency } = useParams();
+  // value.split('=')[1] //Right hand side
+  const id = billid!.split('=')[1];
+  const freq = frequency!.split('=')[1];
+  const bill = bills.filter((x) => x.id === Number(id));
+  const current = new Date();
+  current.setDate(current.getDate() + 14);
+  const numDatToAdd = 7;
+  const countFrency = 1;
+  const countForWeekly = 27;
+  const dueDateArray = [];
+  for (let i = 0; i < countForWeekly; i++) {
+    current.setDate(current.getDate() + numDatToAdd);
+    dueDateArray.push({
+      dueDate: current.toDateString(),
+      amount: Math.floor(bill[0].amount / numDatToAdd),
+      status: 'Scheduled',
+    });
+  }
+  console.log(dueDateArray);
+  return (
+    <div className='flex h-screen'>
+      <div className='m-auto'>
+        <div className='my-6 mb-4 m-auto w-full p-4  bg-white border border-gray-200 rounded-lg'>
+          <h1 className='font-bold'>Your schedule for #10943</h1>
+          <p>
+            You started the fortnightly plan on 20 Nov 2023and it will finish on
+            31 May 2024. There are 14 payments remaining.
+          </p>
+        </div>
+        <div className='flex justify-between'>
+          <button
+            type='button'
+            className='text-gray-900 w-1/4 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center  items-center dark:focus:ring-gray-500 me-2 mb-2 flex justify-between '
+          >
+            <svg
+              className='w-4 h-4 me-2 -ms-1 text-[#626890]'
+              xmlns='http://www.w3.org/2000/svg'
+              viewBox='0 0 24 24'
+              fill='currentColor'
+              className='w-6 h-6'
+            >
+              <path d='M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z' />
+              <path d='M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z' />
+            </svg>
+            Payment Plan
+          </button>
+
+          <select
+            disabled
+            id=''
+            className='text-gray-900 w-[200px] bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center  items-center dark:focus:ring-gray-500 me-2 mb-2 flex justify-between '
+          >
+            <option selected>Options</option>
+            <option value=''></option>
+          </select>
+        </div>
+
+        <div className='relative overflow-x-auto shadow-md sm:rounded-lg'>
+          <table className='w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400'>
+            <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
+              <tr>
+                <th scope='col' className='px-6 py-3'>
+                  Due Date
+                </th>
+                <th scope='col' className='px-6 py-3'>
+                  Amount
+                </th>
+                <th scope='col' className='px-6 py-3'>
+                  Status
+                </th>
+
+                <th scope='col' className='px-6 py-3'>
+                  Actioned
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {dueDateArray.map((item) => (
+                <tr className='odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700'>
+                  <th
+                    scope='row'
+                    className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'
+                  >
+                    {item.dueDate}
+                  </th>
+                  <td className='px-6 py-4'>{item.amount}</td>
+                  <td className='px-6 py-4'>{item.status}</td>
+                  <td className='px-6 py-4'></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className='my-6 mb-4 m-auto w-full p-4  text-slate-800 bg-white border border-gray-200 rounded-lg'>
+          <p>
+            Your flexible payment plan will automatically roll-over into future
+            billing periods. We'll send an SMS before anu roll-over
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Preview;
