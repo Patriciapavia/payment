@@ -3,10 +3,12 @@ import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from '../store/store';
 import { billsSelector, fetchBills } from '../store/billsSlice';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 type Props = {};
 
 const Preview = () => {
+  const navigate = useNavigate();
+
   const { bills, loading, hasErrors } = useSelector(billsSelector);
   console.log(bills);
   const { billid, frequency } = useParams();
@@ -31,7 +33,7 @@ const Preview = () => {
   console.log(dueDateArray);
   return (
     <div className='flex h-screen'>
-      <div className='m-auto'>
+      <div className='m-auto w-2/5'>
         <div className='my-6 mb-4 m-auto w-full p-4  bg-white border border-gray-200 rounded-lg'>
           <h1 className='font-bold'>Your schedule for #10943</h1>
           <p>
@@ -40,27 +42,27 @@ const Preview = () => {
           </p>
         </div>
         <div className='flex justify-between'>
-          <button
-            type='button'
-            className='text-gray-900 w-1/4 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center  items-center dark:focus:ring-gray-500 me-2 mb-2 flex justify-between '
-          >
+          <div className='grid grid-cols-3 divide-x text-gray-900 w-2/5 bg-white hover:bg-slate-100 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center  items-center dark:focus:ring-gray-500 me-2 mb-2'>
             <svg
-              className='w-4 h-4 me-2 -ms-1 text-[#626890]'
+              onClick={() => navigate('/')}
+              className='col-span-1 w-6 h-6 me-2 -ms-1 text-[#626890]'
               xmlns='http://www.w3.org/2000/svg'
               viewBox='0 0 24 24'
               fill='currentColor'
-              className='w-6 h-6'
             >
               <path d='M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z' />
               <path d='M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z' />
             </svg>
-            Payment Plan
-          </button>
+            <span onClick={() => navigate(-1)} className='col-span-2'>
+              {' '}
+              Payment Plans
+            </span>
+          </div>
 
           <select
             disabled
             id=''
-            className='text-gray-900 w-[200px] bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center  items-center dark:focus:ring-gray-500 me-2 mb-2 flex justify-between '
+            className='text-gray-900 w-1/5bg-white hover:bg-slate-100 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center  items-center dark:focus:ring-gray-500 me-2 mb-2 flex justify-between '
           >
             <option selected>Options</option>
             <option value=''></option>
@@ -68,8 +70,8 @@ const Preview = () => {
         </div>
 
         <div className='relative overflow-x-auto shadow-md sm:rounded-lg'>
-          <table className='w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400'>
-            <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
+          <table className='w-full text-sm text-left rtl:text-right table-auto '>
+            <thead className='text-xs text-black uppercase bg-white'>
               <tr>
                 <th scope='col' className='px-6 py-3'>
                   Due Date
@@ -88,16 +90,20 @@ const Preview = () => {
             </thead>
             <tbody>
               {dueDateArray.map((item) => (
-                <tr className='odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700'>
+                <tr className=''>
                   <th
                     scope='row'
-                    className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'
+                    className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-white'
                   >
                     {item.dueDate}
                   </th>
-                  <td className='px-6 py-4'>{item.amount}</td>
-                  <td className='px-6 py-4'>{item.status}</td>
-                  <td className='px-6 py-4'></td>
+                  <td className='px-6 py-4 bg-white'>{item.amount}</td>
+                  <td className='px-6 py-4 bg-white '>
+                    <span className='rounded-full border py-1 px-2'>
+                      {item.status}
+                    </span>
+                  </td>
+                  <td className='px-6 py-4 bg-white'></td>
                 </tr>
               ))}
             </tbody>

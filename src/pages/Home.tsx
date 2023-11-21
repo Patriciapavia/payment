@@ -29,23 +29,22 @@ const Home = () => {
       <div className='m-auto'>
         <div className='w-full max-w-sm p-4 rounded-lg shadow sm:p-6 bg-white'>
           <h5 className='mb-3 text-base font-semibold text-black md:text-xl'>
-            Select Bill
+            Paying bills?
           </h5>
           <p className='text-sm font-normal text-blac'>
-            Connect with one of our available wallet providers or create a new
-            one.
+            Please select wich bill you like to pay
           </p>
           {bills?.map((bill) => (
             <ul className='my-4 space-y-3'>
               <li>
                 <Link
                   to={`/bill/${bill.id}`}
-                  className='flex items-center p-3 text-base font-bold text-black rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-[#D2E3C8] dark:hover:bg-[#B2C8BA]'
+                  className='flex items-center p-3 text-base font-bold text-black rounded-lg group hover:shadow-md shadow '
                 >
                   <span className='flex-1 ms-3 whitespace-nowrap'>
                     Bill Due Date {bill.dueDate}
                   </span>
-                  <span className='inline-flex items-center justify-center px-2 py-0.5 ms-3 text-xs font-medium text-black rounded dark:bg-[#86A789] '>
+                  <span className='inline-flex items-center justify-center px-2 py-0.5 ms-3 text-xs font-medium text-black rounded bg-white'>
                     Amount {bill.amount}
                   </span>
                 </Link>

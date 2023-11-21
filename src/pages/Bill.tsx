@@ -61,7 +61,7 @@ const Bill = () => {
               you can always cancel at any time.
             </p>
             <div className='py-4'>
-              <h5 className='font-bold'>Choose when pauments will start</h5>
+              <h5 className='font-bold'>Choose when payments will start</h5>
               <div className='max-w-[290px] m-auto'>
                 <Datepicker
                   asSingle={true}
@@ -109,7 +109,12 @@ const Bill = () => {
                 b.amount / 6
               )} each, and a final payment of $${b.amount}`}
             />
-            <button className='w-full text-[#86A789]'>Back</button>
+            <button
+              onClick={() => navigate('/')}
+              className='w-full text-blue-500'
+            >
+              Back
+            </button>
           </div>
         </div>
       ))}

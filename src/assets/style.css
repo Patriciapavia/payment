@@ -2,10 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Quicksand&display=swap');
 body{
-    background: #EBF3E8
+    background:rgb(248 250 252);
+    font-family: 'Quicksand', sans-serif;
 }
 
-.datePicker{
-    background-color: #EBF3E8;
-}
