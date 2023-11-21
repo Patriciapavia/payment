@@ -9,28 +9,39 @@ const Preview = () => {
   const { bills } = useSelector(billsSelector);
   console.log(bills);
   const { billid, frequency } = useParams();
-  // value.split('=')[1] //Right hand side
   const id = billid!.split('=')[1];
+
   const freq = frequency!.split('=')[1];
   const bill = bills.filter((x) => x.id === Number(id));
   const current = new Date();
   current.setDate(current.getDate() + 14);
-  const numDatToAdd = 7;
-  const countFrency = 1;
+  // payment duration for weekly 27, forthnightly 13 and monthly 6
   const countForWeekly = 27;
+  const countForForthnightly = 13;
+  const countForMonthly = 6;
+  const freqArray = ['weekly', 'fortnightly', 'monthly'];
+  const paymentPlanDuration =
+    freqArray.indexOf(freq) === 0
+      ? countForWeekly
+      : freqArray.indexOf(freq) === 1
+      ? countForForthnightly
+      : countForMonthly;
+  // 7 day weekly  15 day fortnightly 30 day monthly
+  const numDayToAddToCalendar =
+    freqArray.indexOf(freq) === 0 ? 7 : freqArray.indexOf(freq) === 1 ? 15 : 30;
+  console.log(numDayToAddToCalendar);
   const dueDateArray = [];
-  for (let i = 0; i < countForWeekly; i++) {
-    current.setDate(current.getDate() + numDatToAdd);
+  for (let i = 0; i < paymentPlanDuration; i++) {
+    current.setDate(current.getDate() + numDayToAddToCalendar);
     dueDateArray.push({
       dueDate: current.toDateString(),
-      amount: Math.floor(bill[0].amount / numDatToAdd),
+      amount: Math.floor(bill[0].amount / paymentPlanDuration),
       status: 'Scheduled',
     });
   }
-  console.log(dueDateArray);
   return (
     <div className='flex h-screen'>
-      <div className='m-auto w-2/5'>
+      <div className='m-auto w-2/4'>
         <div className='my-6 mb-4 m-auto w-full p-4  bg-white border border-gray-200 rounded-lg'>
           <h1 className='font-bold'>Your schedule for #10943</h1>
           <p>

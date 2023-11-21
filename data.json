@@ -3,77 +3,29 @@
     {
       "id": 1,
       "dueDate": "11-12-2023",
-      "councilName": "Surry hills",
+      "councilName": "City of Exampleton",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      "amountWeekly": {
-        "amount": "74",
-        "description": "27 weekly payments of $92 each, and a final payment of $2500"
-      },
-      "amountForthnightly": {
-        "amount": "153",
-        "description": "13 fortnightly payments of $192 each, and a final payment of $2500"
-      },
-      "amountMonthly": {
-        "amount": "333",
-        "description": "6 monthly payments of $416 each, and a final payment of $2500"
-      },
       "amount": "2000"
     },
     {
       "id": 2,
       "dueDate": "10-12-2023",
-      "councilName": "Surry hills",
+      "councilName": "City of Exampleton",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      "amountWeekly": {
-        "amount": "92",
-        "description": "27 weekly payments of $92 each, and a final payment of $2500"
-      },
-      "amountForthnightly": {
-        "amount": "192",
-        "description": "13 fortnightly payments of $192 each, and a final payment of $2500"
-      },
-      "amountMonthly": {
-        "amount": "416",
-        "description": "6 monthly payments of $416 each, and a final payment of $2500"
-      },
       "amount": "2500"
     },
     {
       "id": 3,
       "dueDate": "16-12-2023",
-      "councilName": "Surry hills",
+      "councilName": "City of Exampleton",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      "amountWeekly": {
-        "amount": "111",
-        "description": "27 weekly payments of $111 each, and a final payment of $2500"
-      },
-      "amountForthnightly": {
-        "amount": "230",
-        "description": "13 fortnightly payments of $230 each, and a final payment of $2500"
-      },
-      "amountMonthly": {
-        "amount": "500",
-        "description": "6 monthly payments of $500 each, and a final payment of $2500"
-      },
       "amount": "3000"
     },
     {
       "id": 4,
       "dueDate": "16-12-2023",
-      "councilName": "Surry hills",
+      "councilName": "City of Exampleton",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      "amountWeekly": {
-        "amount": "118",
-        "description": "27 weekly payments of $118 each, and a final payment of $2500"
-      },
-      "amountForthnightly": {
-        "amount": "246",
-        "description": "13 fortnightly payments of $246 each, and a final payment of $2500"
-      },
-      "amountMonthly": {
-        "amount": "533",
-        "description": "6 monthly payments of $533 each, and a final payment of $2500"
-      },
       "amount": "3200"
     }
   ]

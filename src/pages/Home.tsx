@@ -1,14 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Bill from './Bill';
 import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from '../store/store';
 import { billsSelector, fetchBills } from '../store/billsSlice';
-// type HomeProps = {
-//   datePick: string;
-//   amount: number;
-// };
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -21,8 +16,8 @@ const Home = () => {
     <div className='flex h-screen'>
       <div className='m-auto'>
         <div className='w-full max-w-sm p-4 rounded-lg shadow sm:p-6 bg-white'>
-          <h5 className='mb-3 text-base font-semibold text-black md:text-xl'>
-            Paying bills?
+          <h5 className='mb-3 text-base font-semibold text-black md:text-xl uppercase'>
+            City of Example
           </h5>
           <p className='text-sm font-normal text-blac'>
             Please select wich bill you like to pay
