@@ -1,5 +1,5 @@
 interface PricingTabProps {
-  frenquency: 'weekly' | 'fortnightly' | 'monthly';
+  frenquency: string;
   popular?: boolean;
   price: number;
   planDescription: string;
@@ -23,16 +23,8 @@ function PricingTab(props: PricingTabProps) {
           <div className='text-sm text-slate-800 mb-5'>
             {props.planDescription}
           </div>
-          {/* <button
-            disabled={props.disabled}
-            onClick={props.onClick}
-            className='w-full inline-flex justify-center whitespace-nowrap rounded-lg bg-blue-500 px-3.5 py-2.5 text-sm font-medium shadow-sm shadow-indigo-950/10 hover:bg-blue-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150 disabled:opacity-50 disabled:cursor-not-allowed'
-          >
-            Select
 
-          </button> */}
           <div className='group flex relative'>
-            {/* <span className='bg-red-400 text-white px-2 py-1'>Button</span> */}
             <button
               disabled={props.disabled}
               onClick={props.onClick}

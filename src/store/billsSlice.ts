@@ -7,7 +7,13 @@ type BillItem = {
   councilName: string;
   description: string;
   amount: number;
-  billPlans: ['weekly' | 'fortnightly' | 'monthly'];
+  billPlans: [
+    {
+      id: number;
+      name: string;
+      numOfPlan: number;
+    }
+  ];
 };
 type BillState = {
   bills: BillItem[];

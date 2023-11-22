@@ -6,7 +6,23 @@
       "councilName": "City of Exampleton",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
       "amount": "2000",
-      "billPlans": ["weekly", "fortnightly", "monthly"]
+      "billPlans": [
+        {
+          "id": 1,
+          "name": "weekly",
+          "numOfPlan": 27
+        },
+        {
+          "id": 2,
+          "name": "fortnightly",
+          "numOfPlan": 13
+        },
+        {
+          "id": 3,
+          "name": "monthly",
+          "numOfPlan": 6
+        }
+      ]
     },
     {
       "id": 2,
@@ -14,7 +30,23 @@
       "councilName": "City of Exampleton",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
       "amount": "2500",
-      "billPlans": ["weekly", "fortnightly", "monthly"]
+      "billPlans": [
+        {
+          "id": 1,
+          "name": "weekly",
+          "numOfPlan": 27
+        },
+        {
+          "id": 2,
+          "name": "fortnightly",
+          "numOfPlan": 13
+        },
+        {
+          "id": 3,
+          "name": "monthly",
+          "numOfPlan": 6
+        }
+      ]
     },
     {
       "id": 3,
@@ -22,7 +54,23 @@
       "councilName": "City of Exampleton",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
       "amount": "3000",
-      "billPlans": ["weekly", "fortnightly", "monthly"]
+      "billPlans": [
+        {
+          "id": 1,
+          "name": "weekly",
+          "numOfPlan": 27
+        },
+        {
+          "id": 2,
+          "name": "fortnightly",
+          "numOfPlan": 13
+        },
+        {
+          "id": 3,
+          "name": "monthly",
+          "numOfPlan": 6
+        }
+      ]
     },
     {
       "id": 4,
@@ -30,7 +78,23 @@
       "councilName": "City of Exampleton",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
       "amount": "3200",
-      "billPlans": ["weekly", "fortnightly", "monthly"]
+      "billPlans": [
+        {
+          "id": 1,
+          "name": "weekly",
+          "numOfPlan": 27
+        },
+        {
+          "id": 2,
+          "name": "fortnightly",
+          "numOfPlan": 13
+        },
+        {
+          "id": 3,
+          "name": "monthly",
+          "numOfPlan": 6
+        }
+      ]
     }
   ]
 }
