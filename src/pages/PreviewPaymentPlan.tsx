@@ -8,13 +8,13 @@ const Preview = () => {
 
   const { bills } = useSelector(billsSelector);
   console.log(bills);
-  const { billid, frequency } = useParams();
+  const { billid, frequency, startDate } = useParams();
   const id = billid!.split('=')[1];
-
   const freq = frequency!.split('=')[1];
+  const paymentStartDate = startDate!.split('=')[1];
   const bill = bills.filter((x) => x.id === Number(id));
-  const current = new Date();
-  current.setDate(current.getDate() + 14);
+  const current = new Date(paymentStartDate);
+  console.log(current, '9999');
   // payment duration for weekly 27, forthnightly 13 and monthly 6
   const countForWeekly = 27;
   const countForForthnightly = 13;
@@ -29,7 +29,6 @@ const Preview = () => {
   // 7 day weekly  15 day fortnightly 30 day monthly
   const numDayToAddToCalendar =
     freqArray.indexOf(freq) === 0 ? 7 : freqArray.indexOf(freq) === 1 ? 15 : 30;
-  console.log(numDayToAddToCalendar);
   const dueDateArray = [];
   for (let i = 0; i < paymentPlanDuration; i++) {
     current.setDate(current.getDate() + numDayToAddToCalendar);
@@ -53,7 +52,7 @@ const Preview = () => {
           <div className='grid grid-cols-3 divide-x text-gray-900 w-2/5 bg-white hover:bg-slate-100 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center  items-center dark:focus:ring-gray-500 me-2 mb-2'>
             <svg
               onClick={() => navigate('/')}
-              className='col-span-1 w-6 h-6 me-2 -ms-1 text-[#626890]'
+              className='col-span-1 w-6 h-6 me-2 -ms-1 text-[#626890] cursor-pointer'
               xmlns='http://www.w3.org/2000/svg'
               viewBox='0 0 24 24'
               fill='currentColor'
@@ -61,8 +60,10 @@ const Preview = () => {
               <path d='M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z' />
               <path d='M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z' />
             </svg>
-            <span onClick={() => navigate(-1)} className='col-span-2'>
-              {' '}
+            <span
+              onClick={() => navigate(-1)}
+              className='col-span-2 cursor-pointer'
+            >
               Payment Plans
             </span>
           </div>

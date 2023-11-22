@@ -13,7 +13,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/bill/:id' element={<Bill />} />
           <Route
-            path='/preview-plan/:billid/:frequency'
+            path='/preview-plan/:billid/:frequency/:startDate'
             element={<Preview />}
           />
         </Routes>

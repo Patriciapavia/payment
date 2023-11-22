@@ -1,12 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { billsSelector } from '../store/billsSlice';
 import { useParams } from 'react-router-dom';
 import Datepicker from 'react-tailwindcss-datepicker';
 import PricingTab from '../components/pricingTab/pricingTab';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
-type FrequencyType = 'weekly' | 'fortnightly' | 'monthly';
 
 const Bill = () => {
   const { id } = useParams();
@@ -18,15 +16,17 @@ const Bill = () => {
   });
 
   const handleValueChange = (newValue) => {
-    console.log('newValue:', newValue);
     setValue(newValue);
   };
   const navigate = useNavigate();
+  useEffect(() => {}, [value.startDate]);
 
   const handleSetupPaymentClick = (id: number, frenquency: string) => {
-    navigate(`/preview-plan/id=${id}/frequency=${frenquency}`);
+    navigate(
+      `/preview-plan/id=${id}/frequency=${frenquency}/startDate=${value.startDate}`
+    );
   };
-
+  console.log(value.startDate);
   return (
     <div className='flex h-screen'>
       {bill.map((b) => (
@@ -59,38 +59,20 @@ const Bill = () => {
 
           {/* Pricing toggle */}
 
-          <div className='max-w-md mx-auto grid grid-cols-1 gap-4 py-2 my-3'>
+          <div className='max-w-sm mx-auto grid grid-cols-1 gap-4 py-2 my-3'>
             {/* Pricing tab 1 */}
+            {b.billPlans.map((billPlan) => (
+              <PricingTab
+                disabled={!value.startDate}
+                onClick={() => handleSetupPaymentClick(b.id, 'weekly')}
+                frenquency={billPlan}
+                price={Math.floor(b.amount / 27)}
+                planDescription={`27 weekly payments of $${Math.floor(
+                  b.amount / 27
+                )} each, and a final payment of $${b.amount}`}
+              />
+            ))}
 
-            <PricingTab
-              onClick={() => handleSetupPaymentClick(b.id, 'weekly')}
-              frenquency='weekly'
-              price={Math.floor(b.amount / 27)}
-              planDescription={`27 weekly payments of $${Math.floor(
-                b.amount / 27
-              )} each, and a final payment of $${b.amount}`}
-            />
-
-            {/* Pricing tab 2 */}
-            <PricingTab
-              onClick={() => handleSetupPaymentClick(b.id, 'fortnightly')}
-              frenquency='fortnightly'
-              popular={true}
-              price={Math.floor(b.amount / 13)}
-              planDescription={`13 fortnightly payments of $${Math.floor(
-                b.amount / 13
-              )} each, and a final payment of $${b.amount}`}
-            />
-
-            {/* Pricing tab 3 */}
-            <PricingTab
-              onClick={() => handleSetupPaymentClick(b.id, 'monthly')}
-              frenquency='monthly'
-              price={Math.floor(b.amount / 6)}
-              planDescription={`6 monthly payments of $${Math.floor(
-                b.amount / 6
-              )} each, and a final payment of $${b.amount}`}
-            />
             <button
               onClick={() => navigate('/')}
               className='w-full text-blue-500'

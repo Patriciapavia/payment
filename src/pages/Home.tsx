@@ -33,7 +33,7 @@ const Home = () => {
                     Bill Due Date {bill.dueDate}
                   </span>
                   <span className='inline-flex items-center justify-center px-2 py-0.5 ms-3 text-xs font-medium text-black rounded bg-white'>
-                    Amount {bill.amount}
+                    Amount ${bill.amount}
                   </span>
                 </Link>
               </li>

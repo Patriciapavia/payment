@@ -5,7 +5,8 @@
       "dueDate": "11-12-2023",
       "councilName": "City of Exampleton",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      "amount": "2000"
+      "amount": "2000",
+      "billPlans": ["weekly", "fortnightly", "monthly"]
     },
     {
       "id": 2,
