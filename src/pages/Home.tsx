@@ -23,7 +23,7 @@ const Home = () => {
             Please select wich bill you like to pay
           </p>
           {bills?.map((bill) => (
-            <ul className='my-4 space-y-3'>
+            <ul key={bill.id} className='my-4 space-y-3'>
               <li>
                 <Link
                   to={`/bill/${bill.id}`}

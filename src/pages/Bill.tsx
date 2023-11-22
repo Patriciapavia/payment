@@ -61,7 +61,7 @@ const Bill = () => {
 
           <div className='max-w-sm mx-auto grid grid-cols-1 gap-4 py-2 my-3'>
             {/* Pricing tab 1 */}
-            {b.billPlans.map((billPlan) => (
+            {b?.billPlans?.map((billPlan) => (
               <PricingTab
                 disabled={!value.startDate}
                 onClick={() => handleSetupPaymentClick(b.id, 'weekly')}

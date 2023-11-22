@@ -1,30 +1,18 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+# To run the project
+Navidate to root directory run `npm run json-server` to start the json server then on the same directory run `npm run dev` to start the react app.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+# The challenge
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- The first challenge is the first bill page, since it doesn't have much information. I decided to create some dummy JSON data, assuming that when users land on this page, they have a list of bills to pay and they can select one of them to pay. Each bill will include  due date and amount so when user select it, it will land on the second page, which is the payment page
 
-- Configure the top-level `parserOptions` property like this:
+- Payment page. The challenge is that since I am not connected to the BE, I am unable to fetch or update data, so I decide to use a method to calculate based on how it should be, but it is not very good to have this logic on the front end; all this payment calculating logic should be coming from the BE.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- payment review page the challenge is I have to display a list of schedule base on what user slect the plan and display each schedule but i dont have the data so I decide to ccreate dummy array base on previous page anfd make and estimated of each type plan and display it on the review page.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+# What I could imorove
+
+- currently the app got no validation or custom error message so I could improve that by adding some validation and custom error message. to show a proper message to the user.
+- also need a unit test
