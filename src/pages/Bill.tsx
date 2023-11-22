@@ -64,7 +64,7 @@ const Bill = () => {
             {b?.billPlans?.map((billPlan) => (
               <PricingTab
                 disabled={!value.startDate}
-                onClick={() => handleSetupPaymentClick(b.id, 'weekly')}
+                onClick={() => handleSetupPaymentClick(b.id, billPlan)}
                 frenquency={billPlan}
                 price={Math.floor(b.amount / 27)}
                 planDescription={`27 weekly payments of $${Math.floor(
